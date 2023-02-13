@@ -16,6 +16,12 @@ public class Application {
 		Animals a3 = new Animals("Rex", 3);
 		System.out.println(a3.nom);
 		System.out.println(a3.age); 
+		
+		System.out.println(Animals.ageMax); 
+		
+		System.out.println(a1.ageMax); 
+		System.out.println(a2.ageMax); 
+		System.out.println(a3.ageMax); 
 	}
 
 }

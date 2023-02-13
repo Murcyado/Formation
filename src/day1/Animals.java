@@ -5,6 +5,10 @@ public class Animals {
 	String nom;
 	int age;
 	
+	// Attributs de classe
+	static int ageMax = 150;
+	
+	
 	//Constructeurs
 	
 	public Animals() 

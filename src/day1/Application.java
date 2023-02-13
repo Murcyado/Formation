@@ -1,5 +1,7 @@
 package day1;
 
+import java.time.LocalDate;
+
 public class Application {
 
 	public static void main(String[] args) {
@@ -13,9 +15,11 @@ public class Application {
 		System.out.println(a1.nom); // null
 		System.out.println(a1.age); // 0
 		
-		Animals a3 = new Animals("Rex", 3);
+		LocalDate naissance = LocalDate.of(2022, 7, 20);
+		Animals a3 = new Animals("Rex", 3, naissance);
 		System.out.println(a3.nom);
-		System.out.println(a3.age); 
+		System.out.println(a3.age);
+		System.out.println(a3.dateNaissance); 
 		
 		System.out.println(Animals.ageMax); 
 		

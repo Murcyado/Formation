@@ -1,6 +1,7 @@
 package day1;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Application {
 
@@ -9,7 +10,7 @@ public class Application {
 		System.out.println("Hello Java");
 		
 		//Instances
-		
+		/*
 		// Animals
 		Animals a1 = new Animals();// appel au constructeur par défaut
 		
@@ -48,7 +49,34 @@ public class Application {
 		
 		//System.out.println(Voiture.nbreVoitureCree);
 		
-		Voiture.getNbreVoitures(); // appel à la méthode de la classe
+		Voiture.getNbreVoitures(); // appel à la méthode de la classe*/
 		
+		
+		System.out.println("Taper les infos de votre voiture");
+		
+		System.out.println("****");
+		
+		System.out.println("Taper la marque : ");
+		Scanner sc = new Scanner(System.in);
+		
+		String marque = sc.nextLine(); // méthode pour lire chaine de caractère
+		
+		System.out.println("Taper le modele : ");
+		String modele = sc.nextLine();
+		
+		System.out.println("Taper la date d'immatriculation sous la forme : 2022-12-01 ");
+		String dateImmatriculation = sc.nextLine();
+		LocalDate dateImmat = LocalDate.parse(dateImmatriculation);
+		
+		System.out.println("Taper la vitesse max. : ");
+		int vitesseMax = sc.nextInt();
+		
+		System.out.println("Marque : "+marque);
+		System.out.println("Modèle : "+modele);
+		System.out.println("Date d'immatriculation : "+dateImmat);
+		System.out.println("Vitesse Max : "+vitesseMax);
+		
+		Voiture v1 = new Voiture(marque,modele,vitesseMax,dateImmat);
+		System.out.println(v1);
 	}
 }

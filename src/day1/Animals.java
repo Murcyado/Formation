@@ -1,5 +1,7 @@
 package day1;
 
+import java.time.LocalDate;
+
 public class Animals {
 	// Attributs d'instance
 	String nom;
@@ -16,7 +18,6 @@ public class Animals {
 		System.out.println("Construction d'un Animal");
 		
 	}
-	
 	
 	public Animals(String nom, int age, LocalDate ld) 
 	{

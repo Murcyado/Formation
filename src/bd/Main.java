@@ -20,7 +20,11 @@ public class Main {
 	     
 	     Statement stmt = connection.createStatement();
 	     
-	     String sql="insert into etudiant (nom,email,age) values('noah','noah.caroux@gmail.com',21)";
+	     String nom ="Noah C";
+	     String email ="noah.caroux@ecole-it.com";
+	     int age = 21;
+	     
+	     String sql="insert into etudiant (nom,email,age) values('"+nom+"','"+email+"','"+age+"')";
 	     int res = stmt.executeUpdate(sql);
 	     System.out.println(res);
 	     System.out.println(connection);

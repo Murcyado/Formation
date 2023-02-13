@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Scanner;
 
 
 public class Main {
@@ -20,9 +21,15 @@ public class Main {
 	     
 	     Statement stmt = connection.createStatement();
 	     
-	     String nom ="Noah C";
-	     String email ="noah.caroux@ecole-it.com";
-	     int age = 21;
+	     Scanner sc = new Scanner(System.in);
+	     System.out.println("Donner le nom : ");
+	     String nom =sc.nextLine();
+	     
+	     System.out.println("Donner l'email : ");
+	     String email =sc.nextLine();
+	     
+	     System.out.println("Donner votre age : ");
+	     int age = sc.nextInt();
 	     
 	     String sql="insert into etudiant (nom,email,age) values('"+nom+"','"+email+"','"+age+"')";
 	     int res = stmt.executeUpdate(sql);

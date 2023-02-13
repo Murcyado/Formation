@@ -5,6 +5,27 @@ import java.util.Scanner;
 
 public class Application {
 
+	public static Voiture saisiDataVoiture(Scanner sc)
+	{
+		System.out.println("Taper les infos de votre voiture");
+		System.out.println("****");
+		
+		System.out.println("Taper la marque : ");
+		String marque = sc.nextLine(); // méthode pour lire chaine de caractère
+		
+		System.out.println("Taper le modele : ");
+		String modele = sc.nextLine();
+		
+		System.out.println("Taper la date d'immatriculation sous la forme : 2022-12-01 ");
+		String dateImmatriculation = sc.nextLine();
+		LocalDate dateImmat = LocalDate.parse(dateImmatriculation);
+		
+		System.out.println("Taper la vitesse max. : ");
+		int vitesseMax = sc.nextInt();
+		
+		return new Voiture(marque,modele,vitesseMax,dateImmat);
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Hello Java");
@@ -52,7 +73,7 @@ public class Application {
 		Voiture.getNbreVoitures(); // appel à la méthode de la classe*/
 		
 		
-		System.out.println("Taper les infos de votre voiture");
+		/*System.out.println("Taper les infos de votre voiture");
 		
 		System.out.println("****");
 		
@@ -74,9 +95,14 @@ public class Application {
 		System.out.println("Marque : "+marque);
 		System.out.println("Modèle : "+modele);
 		System.out.println("Date d'immatriculation : "+dateImmat);
-		System.out.println("Vitesse Max : "+vitesseMax);
+		System.out.println("Vitesse Max : "+vitesseMax);*/
 		
-		Voiture v1 = new Voiture(marque,modele,vitesseMax,dateImmat);
+		Scanner sc = new Scanner(System.in);
+		
+		Voiture v1 = saisiDataVoiture(sc);
 		System.out.println(v1);
+		sc.nextLine();
+		Voiture v2 = saisiDataVoiture(sc);
+		System.out.println(v2);
 	}
 }

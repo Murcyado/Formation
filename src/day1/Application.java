@@ -7,7 +7,9 @@ public class Application {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Hello Java");
+		
 		//Instances
+		
 		// Animals
 		Animals a1 = new Animals();// appel au constructeur par défaut
 		
@@ -32,8 +34,8 @@ public class Application {
 		// Voiture
 		LocalDate immatriculation = LocalDate.of(2022, 7, 20);
 		Voiture v1 = new Voiture("Renault","Clio", 200, immatriculation);
-		//System.out.println(v1.toString());
 		System.out.println(v1);
+		//System.out.println(v1.toString());
 		//System.out.println(v1.modele);
 		//System.out.println(v1.vitesse);
 		//System.out.println(v1.dateImmatriculation);
@@ -47,10 +49,6 @@ public class Application {
 		//System.out.println(Voiture.nbreVoitureCree);
 		
 		Voiture.getNbreVoitures(); // appel à la méthode de la classe
-		
-		/*System.out.println(v1.nbreVoitureCree); 
-		System.out.println(v2.nbreVoitureCree); 
-		System.out.println(v3.nbreVoitureCree); */
 		
 	}
 }

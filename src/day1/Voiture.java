@@ -35,12 +35,4 @@ public class Voiture {
 		System.out.println("Nombre de voiture en mémoire : " + nbreVoitureCree);
 	}
 	
-
-	public void info()
-	{
-		System.out.println("Marque : "+this.marque);
-		System.out.println("Modèle : "+this.modele);
-		System.out.println("Vitesse max : "+this.vitesse);
-		System.out.println("Date d'immatriculation : "+this.dateImmatriculation);
-	}
 }

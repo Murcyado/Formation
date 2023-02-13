@@ -109,5 +109,7 @@ public class Application {
 		ArrayList<Voiture> voitures = new ArrayList<>();
 		voitures.add(v1);
 		voitures.add(v2);
+		
+		System.out.println("Contenu de la liste voitures : " + voitures);
 	}
 }

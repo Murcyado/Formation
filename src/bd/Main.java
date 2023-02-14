@@ -49,6 +49,26 @@ public class Main {
 	     return res;
 	}
 	
+	public static void updateData(Statement stmt) throws SQLException {
+	    Scanner sc = new Scanner(System.in);
+
+	    System.out.println("Donner l'ID de l'étudiant à mettre à jour:");
+	    int id = sc.nextInt();
+
+	    System.out.println("Donner le nouveau nom:");
+	    String nom = sc.next();
+
+	    String sql = "UPDATE etudiant SET nom='" + nom + "' WHERE id=" + id;
+	    int res = stmt.executeUpdate(sql);
+
+	    if (res == 0) {
+	        System.out.println("ID Introuvable");
+	    } else {
+	        System.out.println("Mise à jour de l'étudiant réussie");
+	    }
+	}
+
+	
 	public static void deleteData(Statement stmt) throws SQLException {
 		 Scanner sc = new Scanner(System.in);
 	     
@@ -83,6 +103,9 @@ public class Main {
 		     getData(stmt);
 		     //3) Suppression d'un étudiant
 		     deleteData(stmt);
+		     getData(stmt);
+		     //4) Mise à jour du nom d'un étudiant
+		     updateData(stmt);
 		     getData(stmt);
 		     
 	     //System.out.println(connection);

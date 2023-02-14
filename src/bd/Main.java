@@ -87,7 +87,11 @@ public class Main {
 			System.out.println("Donner un nom");
 			String nom = sc.nextLine();
 
-			String sql = "update etudiant set nom='" + nom + "' where id ='" + id + "'";
+			System.out.println("Donner un email");
+			String email = sc.nextLine();
+			
+			
+			String sql = "update etudiant set nom='" + nom + "', email ='"+email+"' where id ='" + id + "'";
 			res = stmt.executeUpdate(sql);
 			System.out.println("Mise à jour avec sucès");
 
@@ -115,6 +119,50 @@ public class Main {
 		}
 		return false;
 	}
+	
+	
+	public static void addEcole(Statement stmt) throws SQLException {
+	    Scanner sc = new Scanner(System.in);
+
+	    System.out.println("Donner l'ID de l'école");
+	    int id = sc.nextInt();
+	    sc.nextLine(); // récupérer le clic sur le bouton entré
+
+	    System.out.println("Donner le nom de l'école");
+	    String nom = sc.nextLine();
+
+	    System.out.println("Donner l'adresse de l'école");
+	    String adresse = sc.nextLine();
+
+	    System.out.println("Donner le nombre total d'étudiants de l'école");
+	    int totalEtudiant = sc.nextInt();
+
+	    String sql = "INSERT INTO ecole (id, nom, adresse, totaletudiant) VALUES ('" + id + "', '" + nom + "', '" + adresse + "', '" + totalEtudiant + "')";
+	    int res = stmt.executeUpdate(sql);
+
+	    if (res > 0) {
+	        System.out.println("L'école a été ajoutée avec succès.");
+	    } else {
+	        System.out.println("Erreur lors de l'ajout de l'école.");
+	    }
+	}
+
+
+    public static void displayEcole(Statement stmt) throws SQLException {
+        ResultSet rs = null;
+        String rq = "SELECT * FROM ecole";
+
+        rs = stmt.executeQuery(rq);
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String nom = rs.getString("nom");
+            String adresse = rs.getString("adresse");
+            int totalEtudiant = rs.getInt("totaletudiant");
+
+            System.out.println("ID : " + id + " | Nom : " + nom + " | Adresse : " + adresse + " | Total d'étudiants : " + totalEtudiant);
+        }
+    }
 
 	public static void main(String[] args) throws Exception {
 		// Main m = new Main(); // création d'une instance
@@ -137,12 +185,17 @@ public class Main {
 			// 1)Lecture de data depuis le clavier
 			// insertData(stmt);
 			// 2)Affichage de toutes les data de la table étudiant
-			getData(stmt);
+			//getData(stmt);
 			// 3)Suppression d'un étduiant
-			 deleteData(stmt);
+			// deleteData(stmt);
 			// 4)Update
 			//updateData(stmt);
-			getData(stmt);
+			//getData(stmt);
+			
+			// 1)Ajout d'une école
+						addEcole(stmt);
+						// 2)Affichage de toutes les écoles
+						displayEcole(stmt);
 
 			// System.out.println(connection);
 		} catch (Exception exception) {

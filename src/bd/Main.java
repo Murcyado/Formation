@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import day2.CrudEcole;
+
 public class Main {
 
 	public static void getData(Statement stmt) throws SQLException {
@@ -21,8 +23,9 @@ public class Main {
 			String nom = rs.getString("nom");
 			String email = rs.getString("email");
 			int age = rs.getInt("age");
-
-			System.out.println("ID : " + id + " | Nom : " + nom + " | Email : " + email + " | Age : " + age);
+			int idEcole = rs.getInt("idEcole");
+			
+			System.out.println("ID : " + id + " | Nom : " + nom + " | Email : " + email + " | Age : " + age +" | IdEcole : " + idEcole);
 		}
 	}
 
@@ -37,10 +40,16 @@ public class Main {
 
 		System.out.println("Donner votre age");
 		int age = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Choisir une école : ");
+		//Affichage des écoles pour pouvoir la sélectionner
+		CrudEcole.displayEcole(stmt);
+		int idEcole = sc.nextInt();
 
 		// 1) Insert dans la table Etudiant
 
-		String sql = "insert into etudiant (nom,email,age) values('" + nom + "','" + email + "','" + age + "')";
+		String sql = "insert into etudiant (nom,email,age,idecole) values('" + nom + "','" + email + "','" + age + "','" + idEcole + "')";
 		int res = stmt.executeUpdate(sql);
 		// System.out.println(res);
 		return res;
@@ -119,46 +128,6 @@ public class Main {
 		}
 		return false;
 	}
-	
-	// Exercice table "école"
-	public static void addEcole(Statement stmt) throws SQLException {
-	    Scanner sc = new Scanner(System.in);
-
-	    System.out.println("Donner le nom de l'école");
-	    String nom = sc.nextLine();
-
-	    System.out.println("Donner l'adresse de l'école");
-	    String adresse = sc.nextLine();
-
-	    System.out.println("Donner le nombre total d'étudiants de l'école");
-	    int totalEtudiant = sc.nextInt();
-
-	    String sql = "INSERT INTO ecole (nom, adresse, totaletudiant) VALUES ('" + nom + "', '" + adresse + "', '" + totalEtudiant + "')";
-	    int res = stmt.executeUpdate(sql);
-
-	    if (res > 0) {
-	        System.out.println("L'école a été ajoutée avec succès.");
-	    } else {
-	        System.out.println("Erreur lors de l'ajout de l'école.");
-	    }
-	}
-
-
-    public static void displayEcole(Statement stmt) throws SQLException {
-        ResultSet rs = null;
-        String rq = "SELECT * FROM ecole";
-
-        rs = stmt.executeQuery(rq);
-
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String nom = rs.getString("nom");
-            String adresse = rs.getString("adresse");
-            int totalEtudiant = rs.getInt("totaletudiant");
-
-            System.out.println("ID : " + id + " | Nom : " + nom + " | Adresse : " + adresse + " | Total d'étudiants : " + totalEtudiant);
-        }
-    }
 
 	public static void main(String[] args) throws Exception {
 		// Main m = new Main(); // création d'une instance

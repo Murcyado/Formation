@@ -120,13 +120,9 @@ public class Main {
 		return false;
 	}
 	
-	
+	// Exercice table "école"
 	public static void addEcole(Statement stmt) throws SQLException {
 	    Scanner sc = new Scanner(System.in);
-
-	    System.out.println("Donner l'ID de l'école");
-	    int id = sc.nextInt();
-	    sc.nextLine(); // récupérer le clic sur le bouton entré
 
 	    System.out.println("Donner le nom de l'école");
 	    String nom = sc.nextLine();
@@ -137,7 +133,7 @@ public class Main {
 	    System.out.println("Donner le nombre total d'étudiants de l'école");
 	    int totalEtudiant = sc.nextInt();
 
-	    String sql = "INSERT INTO ecole (id, nom, adresse, totaletudiant) VALUES ('" + id + "', '" + nom + "', '" + adresse + "', '" + totalEtudiant + "')";
+	    String sql = "INSERT INTO ecole (nom, adresse, totaletudiant) VALUES ('" + nom + "', '" + adresse + "', '" + totalEtudiant + "')";
 	    int res = stmt.executeUpdate(sql);
 
 	    if (res > 0) {
@@ -183,19 +179,21 @@ public class Main {
 			stmt = connection.createStatement();
 
 			// 1)Lecture de data depuis le clavier
-			// insertData(stmt);
+			insertData(stmt);
 			// 2)Affichage de toutes les data de la table étudiant
-			//getData(stmt);
+			getData(stmt);
 			// 3)Suppression d'un étduiant
 			// deleteData(stmt);
 			// 4)Update
 			//updateData(stmt);
 			//getData(stmt);
 			
+			
+			//Exercice table "école"
 			// 1)Ajout d'une école
-						addEcole(stmt);
-						// 2)Affichage de toutes les écoles
-						displayEcole(stmt);
+			//addEcole(stmt);
+			// 2)Affichage de toutes les écoles
+			//displayEcole(stmt);
 
 			// System.out.println(connection);
 		} catch (Exception exception) {
